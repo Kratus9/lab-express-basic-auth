@@ -17,10 +17,10 @@ const favicon = require("serve-favicon");
 // https://www.npmjs.com/package/path
 const path = require("path");
 
-// const session = require('express-session');
-// const MongoStore = require('connect-mongo');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
-// const MONGO_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/basic-auth";
+const MONGO_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/basic-auth";
 
 // Middleware configuration
 module.exports = (app) => {
@@ -43,18 +43,19 @@ module.exports = (app) => {
   app.use(favicon(path.join(__dirname, "..", "public", "images", "favicon.ico")));
 };
 
-// Configuracion de la sesión
-// app.use(session({
-//   secret: process.env.SESSION_SECRET, // palabra que hace un cifrado de las cookies de los usuario
-//   saveUninitialized: false, // don't create session until something stored
-//   resave: false, //don't save session if unmodified
-//   cookie: {
-//     maxAge: 7 * 24 * 60 * 60 * 1000 // tiempo de vida en milisegundos de la cookie. Ejemplo de 7 días. OPCIONAL
-//   },
-//   store: MongoStore.create({
-//     mongoUrl: MONGO_URI,
-//     ttl: 4 * 24 * 60 * 60 // time to live. Tiempo de vida. En SEGUNDOS. Ejemplo de 4 días. OPCIONAL
+// // Configuración de la session
+// app.use(
+//   session({
+//       secret: process.env.SESSION_SECRET, // Palabra que cifra las cookies del usuario
+//       resave: false, // No guarda sesión si no se modifica
+//       saveUninitialized: false, // No crea sesión hasta que haya algo almacenado
+//       cookie: {
+//           maxAge: 1000 * 60 * 60 * 24 * 30 // Tiempo de vida en milisegundos de la cookie. (30 dias)
+//       },
+//       store: MongoStore.create({
+//           mongoUrl: process.env.MONGO_URI
+//       })
 //   })
-// }));
+// )
 
 
