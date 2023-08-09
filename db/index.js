@@ -10,8 +10,8 @@ const MONGO_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/lab-expr
 mongoose
   .connect(MONGO_URI)
   .then((x) => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
+    console.log(`Conectado a Mongo! Database name: "${x.connections[0].name}"`);
   })
   .catch((err) => {
-    console.error("Error connecting to mongo: ", err);
+    console.error("Error conectando a mongo: ", err);
   });
